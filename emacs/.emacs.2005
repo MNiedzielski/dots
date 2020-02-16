@@ -1,0 +1,119 @@
+;;;
+;;; .emacs
+;;;
+;;; Wed 12 October 1988 Mark Niedzielski (niedziel@copper)
+;;; Tue 2 November 2004 Mark Niedzielski (min@savantis)
+;;;
+
+;
+; Note: in case you don't know lisp, 't' is true, and 'nil' is false
+;
+
+;( setq load-path (pushnew "/home/min/emacs/" load-path) )
+( setq load-path (cons "/home/min/emacs" load-path) )
+( add-to-list 'load-path "~/.xemacs/" )
+;;( setq load-path (cons "path_to_directory" load-path) ) ; example alternative to add-to-list
+
+;( setq load-path
+;       ( append (list (expand-file-name "/home/min/emacs/")
+;		      (expand-file-name "~/.xemacs")
+;              load-path)
+;	)
+;)
+
+( defvar using-server             nil )	  ; if you want to use emacsclient
+( defvar using-abbrevs            nil )	  ; if you have a file of abbreviations
+( defvar using-unix               nil )   ; enable server and extended controls
+( defvar sun-esc-bracket            t )	  ; for sun function keys
+( defvar display-time-interval      5 )	  ; update rate for time on mode line
+( defvar c-tabs-should-be-tabs      t )	  ; is <TAB> a tab, or an indent line
+( defvar extra-click-wait         300 )
+
+( let ((gc-cons-threshold 1000000))
+
+; ( load "newtime"		nil t )
+  ( if (eq window-system 'x)
+    ( let nil
+      ( load "blink-paren"	nil t )
+    )
+  )
+  ( if (eq using-unix t)
+    ( let nil
+      ( load "term/sun"	        nil t )
+      ( load "sunkeys"	        nil t )
+      ( load "sunX-keys"	nil t )
+      ( load "mouse-bits"       nil t )
+      ( load "x-sb-mouse"	nil t )
+      ( load "xsbm-userfuns"	nil t )
+      ( load "server"		nil t )
+    )
+  )
+  ( load "scroll-in-place.el"	nil t )
+; ( load "ebuff-menu"		nil t )
+  ( load "echistory"		nil t )
+  ( load "man"			nil t )
+  ( load "saveconf"		nil t )
+; ( load "cplus-md"		nil t )
+; ( load "c-mode"		nil t )
+; ( load ".emacs_init"		nil t )
+; ( load "thing"		nil t )
+; ( load "positions"		nil t )
+; ( load "pos-help"		nil t )
+; ( load "ispell"		nil t )
+; ( load "cmacexp"		nil t )
+  ( load "custom.el"		nil t )      ; XEmacs layout variables
+  ( load "hhm-config.el"        nil t )      ; HTML Helper Mode configuration
+  ( load "longlines.el"         nil t )      ; Manually wrap long lines
+  ( load "mic-paren.el"         nil t )      ; Advanced Paren Matching
+  ( load "jde-java-font-lock.el"nil t )      ; Advanced Font Lock for Java
+
+  ( garbage-collect )
+)
+
+( define-key global-map [menu]           'electric-buffer-list )
+( define-key global-map [home]           'enlarge-window       )
+( define-key global-map [end]            'shrink-window        )
+( define-key global-map [control-delete] 'delete-backwards     )
+( define-key global-map [pause]          'longlines-mode       )
+( define-key global-map [f11]            'describe-key         )
+( define-key global-map [f12]            'describe-function    )
+
+;; HTML Helper Mode w/ ASP support, associate file types with mode
+( autoload 'html-helper-mode             "html-helper-mode" "Yay HTML" t )
+( add-to-list 'auto-mode-alist           '("\\.\\(html\\|shtml\\|phtml\\|asp\\|cfm\\)$" . html-helper-mode) t )
+( setq html-helper-build-new-buffer      t )   ; Insert new document HTML template
+( setq html-helper-address-string        "<a href=\"www.savantis.com\">Mark Niedzielski &lt;min@epictechnologies.com&gt;</a>")
+( setq html-helper-do-write-file-hooks   t )   ; Enable time stamp
+( setq tempo-interactive                 t )   ; Enable hyperlink prompt
+
+( autoload 'visual-basic-mode            "visual-basic-mode" "VB mode." t )
+( add-to-list 'auto-mode-alist           '("\\.\\(frm\\|bas\\|cls\\)$" . visual-basic-mode) t )
+
+( autoload 'bat-mode                     "bat-mode" t )
+( add-to-list 'auto-mode-alist           '("\\.[bB][aA][tT]$" . bat-mode) t )
+
+( paren-set-mode                         'sexp )
+
+( if using-server ( server-start ) )
+
+( setq display-time-day-and-date         nil ) ; show day, date and time
+( setq display-time-mail-file            t )   ; don't check mail
+( setq display-time-24hr-format          t )   ; in 24hr format
+( display-time )
+
+( if using-abbrevs ( read-abbrev-file nil t ) )
+
+;; Backup files in one spot
+(setq backup-directory-alist nil)
+(setq backup-directory-alist
+      (cons (cons "\\.*$" (expand-file-name "~/.xemacs/backups"))
+            backup-directory-alist))
+
+( setq make-backup-files                 nil ) ; this ought to be interactive
+( setq auto-save-and-recover-context     t )   ; to save context upon exit
+( setq save-buffer-context               t )   ; to save context of all buffers
+( recover-context )
+
+( ecb-activate )                               ; enable Emacs Code Browser by default
+
+( put 'eval-expression 'disabled nil )

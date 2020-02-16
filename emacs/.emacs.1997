@@ -1,0 +1,69 @@
+;;;
+;;; .emacs
+;;;
+;;; Wed 12 October 1988  Mark Niedzielski (niedziel@copper)
+;;;
+
+;
+; Note: in case you don't know lisp, 't' is true, and 'nil' is false
+;
+
+(setq load-path ( append ' ( "/home/min/emacs" ) load-path ) )
+
+;( defvar using-server t )		  ; if you want to use emacsclient
+;( defvar using-abbrevs t )		  ; if you have a file of abbreviations
+( defvar sun-esc-bracket t )		  ; for sun function keys
+( defvar display-time-interval 5 )	  ; update rate for time on mode line
+( defvar c-tabs-should-be-tabs t )	  ; is <TAB> a tab, or an indent line
+
+(let ((gc-cons-threshold 1000000))
+
+  ( load "newtime"		nil t )
+  ( load "term/sun"		nil t )
+  ( if (eq window-system 'x)
+      ( let nil
+	( load "sunkeys"	nil t )
+;	( load "sunX-keys"	nil t )
+	( load "mouse-bits"	nil t )
+	( load "blink-paren"	nil t )
+      )
+  )
+  ( load "scroll-in-place.el"	nil t )
+  ( load "ebuff-menu"		nil t )
+  ( load "echistory"		nil t )
+  ( load "man"			nil t )
+; ( load "server"		nil t )
+  ( load "saveconf"		nil t )
+  ( load "cplus-md"		nil t )
+  ( load "c-mode"		nil t )
+  ( load ".emacs_init"		nil t )
+
+; ( load "thing"		nil t )
+; ( load "x-sb-mouse"		nil t )
+; ( load "xsbm-userfuns"	nil t )
+
+; ( load "positions"		nil t )
+; ( load "pos-help"		nil t )
+; ( load "ispell"		nil t )
+; ( load "cmacexp"		nil t )
+
+  ( garbage-collect )
+
+)
+
+;( if using-server ( server-start ) )
+
+( defvar extra-click-wait 300 )
+
+;( setq display-time-day-and-date t )
+;( display-time )
+
+;( if using-abbrevs ( read-abbrev-file nil t ) )
+
+( setq make-backup-files nil )           ; this ought to be interactive
+
+( setq auto-save-and-recover-context t ) ; to save context upon exit
+( setq save-buffer-context t )           ; to save context of all buffers
+( recover-context )
+
+(put 'eval-expression 'disabled nil)

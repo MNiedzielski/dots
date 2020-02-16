@@ -1,0 +1,109 @@
+Text Region
+-----------
+left		Move point to mouse cursor, and allow dragging.
+
+middle		Set mark at mouse cursor, and put region in stuff buffer.
+
+right		Pop-up menu of editor commands.
+
+right double	Set mark and yank contents of current sunwindows selection
+
+
+left shift 
+left double		Exchange point and mark.
+
+middle shift 
+middle double		Context sensitive save/delete/yank.
+
+middle control		Put thing at mouse in kill ring, leave point as is.
+
+right control		Kill thing at mouse, leave point where it was.
+
+left control		Yank from kill-ring at point; then cycle thru kill ring.
+
+left middle control	Put thing at mouse in kill ring, yank to point.
+
+left right control	Kill thing at mouse, yank it to point.
+
+middle right control	Set point and mark to text object using syntax table.
+
+left meta		Scrolls the line at the mouse cursor up to the top.
+
+left shift meta 
+left meta double	Scrolls the line at the mouse cursor to the bottom.
+
+middle meta		Scrolls the line at the mouse cursor to the middle.
+
+middle shift meta 
+middle meta double	Scrolls the line at the middle to the mouse cursor.
+
+middle control meta	Split the window vertically at the mouse cursor.
+
+right meta		Scrolls the top line down to the mouse cursor.
+
+right shift meta 
+right meta double	Scrolls the bottom line up to the mouse cursor.
+
+left control meta	Invokes last keyboard macro at mouse cursor.
+
+right control meta	Invokes undo in the window mouse is in.
+
+right shift control meta 
+right control meta double	Display menu of mouse functions for this region.
+
+
+Modeline Region
+-------- ------
+left		Scrolls the window upward.
+
+middle		Scrolls the window proportionally corresponding to window
+
+middle control	Splits the window horizontally at mouse cursor.
+
+right		Scrolls the window downward.
+
+left control	Deletes all windows except the one mouse is in.
+
+right control	Deletes the window mouse is in.
+
+left meta 
+middle meta 
+right meta 
+left right control 
+left right	Selects the window, restoring point.
+
+right shift control meta 
+right control meta double	Display menu of mouse functions for this region.
+
+
+Scrollbar Region
+--------- ------
+left 
+left meta		Scrolls the line at the mouse cursor up to the top.
+
+left shift 
+left double 
+left shift meta 
+left meta double	Scrolls the line at the mouse cursor to the bottom.
+
+middle 
+middle meta		Scrolls the line at the mouse cursor to the middle.
+
+middle shift 
+middle double 
+middle shift meta 
+middle meta double	Scrolls the line at the middle to the mouse cursor.
+
+middle control 
+middle control meta	Split the window vertically at the mouse cursor.
+
+right 
+right meta		Scrolls the top line down to the mouse cursor.
+
+right shift 
+right double 
+right shift meta 
+right meta double	Scrolls the bottom line up to the mouse cursor.
+
+right shift control meta 
+right control meta double	Display menu of mouse functions for this region.

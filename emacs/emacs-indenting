@@ -1,0 +1,43 @@
+From markr@eye.com Thu Mar 25 10:28:42 1993
+Date: Thu, 25 Mar 93 10:28:02 -0500
+From: Mark Reichert <markr@eye.com>
+To: min@Kodak.COM
+Reply-To: markr@eye.com
+Content-Length: 1035
+Status: RO
+X-Lines: 33
+
+
+Do you ever have to work on someone's code that is indented at level 4 instead
+of 8, and uses the mess of tabs and 4 spaces that vi gives when you hit ^t?
+
+Usually, I just pipe the whole thing through 'cb'.
+
+In the case of the code that I am working on now, that might not be appropriate.
+[I don't really own it.] So, I add the following to the bottom of every file
+that I have to edit:
+
+/*
+ * Emacs formatting control info.
+ *
+ * Local Variables:
+ * c-indent-level: 4
+ * c-brace-offset: -4
+ * c-label-offset: -4
+ * c-argdecl-indent: 0
+ * c-continued-statement-offset: 4
+ * eval: ( define-key c-mode-map "\177" 'backward-delete-char-untabify )
+ * End:
+ */
+
+Emacs (aka "God's Editor") reads the local variables section, and sets up my
+C style indentation to be compatible with the braindead vi system.
+
+I still need to look at the mess, but at least I don't have to fight against
+emacs to write code in context.
+
+M-
+
+ps. A local variables section has to be withing 3000 bytes of the *end* of
+    a file for emacs to consider using it.
+

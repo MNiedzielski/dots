@@ -1,0 +1,9 @@
+;;
+;;        By default, in c mode, LFD (Line Feed) is bound to
+;;newline-and-indent and RET (Return) is bound to newline. I just switch
+;;these by including the following in my .emacs file
+;;
+(setq c-mode-hook '(lambda ()
+		     (define-key c-mode-map "\C-m" 'newline-and-indent)
+		     (define-key c-mode-map "\C-j" 'newline)))
+	

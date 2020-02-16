@@ -1,0 +1,65 @@
+
+In article <Jul.22.12.23.44.1990.21931@athos.rutgers.edu> mende@athos.rutgers.edu (Bob Mende Pie) writes:
+>In article <1990Jul19.162836.27309@cbnews.att.com> shurr@cbnews.att.com
+>(Larry A. Shurr) writes:
+>> >	BTW, no one here seems to be able to tell me the
+>> >keystroke for toggling Emacs into typeover mode.  I'm sure there
+>> >must be one [...]
+>> I use the following in my .emacs file:
+>> 	(global-set-key "\M-oo" ' overwrite-mode)
+>
+>  I use picture mode instead of overwrite mode...In overwrite mode, if you
+>delete from the middle of a word/sentence all text to the right of the
+>cursor is moved over similar to standard delete-backward-char.
+
+...which is the reason for the existence of the following wee scrap of code
+in my startup set.  Lets me use the Delete key without crunching
+characters.  Of course, this might also be fixed for the other kill
+functions as well (i.e. \C-w would copy the text to the kill ring
+and replace it with blanks), but the Delete seems to be the biggest
+annoyance.
+
+;;;
+;;; extend overwrite-mode to allow for non-destructive delete
+;;;
+;;;
+
+(global-set-key "\M-o" 'my-overwrite-mode)
+
+(defun my-overwrite-mode (arg)
+  "Toggle overwrite mode.
+With arg, turn overwrite mode on iff arg is positive.
+In overwrite mode, printing characters typed in replace existing text
+on a one-for-one basis, rather than pushing it to the right."
+  (interactive "P")
+  (setq overwrite-mode
+	(if (null arg) (not overwrite-mode)
+	  (> (prefix-numeric-value arg) 0)))
+  (if overwrite-mode
+      (local-set-key "" 'backward-erase-char-untabify)
+      (local-set-key "" 'backward-delete-char-untabify))
+  (set-buffer-modified-p (buffer-modified-p))) ;No-op, but updates mode line.
+
+(defun backward-erase-char-untabify (arg &optional killp)
+  "Erase characters backward, replacing them with spaces.
+Delete ARG chars, and kill (save in kill ring) if KILLP is non-nil.
+Interactively, ARG is the prefix arg (default 1)
+and KILLP is t if prefix arg is was specified."
+  (interactive "*p\nP")
+  (let ((count arg))
+    (save-excursion
+      (while (and (> count 0) (not (bobp)))
+	(if (= (preceding-char) ?\t)
+	    (let ((col (current-column)))
+	      (forward-char -1)
+	      (setq col (- col (current-column)))
+	      (insert-char ?\ col)
+	      (delete-char 1)))
+	(forward-char -1)
+	(setq count (1- count)))))
+  (if killp
+      (kill-region (point) (- (point) arg))
+      (delete-region (point) (- (point) arg)))
+  (insert-char ?\  (if (>= arg 0) arg (- arg)))
+  (forward-char (- arg)))
+

@@ -1,0 +1,107 @@
+.TH GNUSERV 1 "" "Server / Client enhancements for GNU Emacs"
+.UC 4
+.SH NAME
+gnuserv, gnuclient, gnudoit \- Server / Client Enhancements for GNU Emacs
+.SH SYNOPSIS
+.B gnuclient
+[-h hostname] [-q] [-p port] [-r pathname] [[+line] path] ...
+.br
+.B gnudoit 
+[-h hostname] [-q] [-p port] [sexpr] ...
+.br
+.B gnuserv
+.SH DESCRIPTION
+\fBgnuclient\fP allows the user to request a running GNU Emacs process to
+edit the named files or directories. 
+.PP
+\fBgnudoit\fP allows the user to request a running GNU Emacs process to
+evaluate the given arguments inside a progn lisp form.
+.PP
+\fBgnuserv\fP is the server program that is set running by GNU Emacs to
+handle all incoming and outgoing requests. It is not usually invoked directly, but is
+started from GNU Emacs by the lisp form (server-start).
+.PP
+The options are:
+.P
+.TP 10
+\fB-q\fP
+This option means that both gnuclient and gnudoit will exit once connection has
+been made with the GNU Emacs process. Normally gnuclient waits until all of the
+files on the command line have been finished with (their buffers killed) by the
+GNU Emacs process. Normally gnudoit
+waits around for evaluation of its arguments by the GNU Emacs process, and prints
+the results or error conditions.
+.TP 10
+\fB-h\fP hostname
+This option specifies the host machine which should be running gnuserv. If this option
+is not specified then the value of the environment variable
+``GNU_HOST'' is used if set, otherwise the hostname of the machine running the
+program is used.
+Note that an internet address may be specified instead of a 
+hostname which can speed up connections to the server by quite a factor,
+especially if the client machine is running YP.
+.TP 10
+\fB-p\fP port
+The service is called ``gnuserv'' in the services database, but a
+different service port may be specified with this option.
+The server must also be using the same service port. If this option is not
+specified, but the value of the environment variable ``GNU_PORT'' is
+specified, then it is used instead. Note that gnuserv doesn't use the command
+line option since it is usually started from within GNU Emacs.
+.TP 10
+\fB-p\fP pathname
+The pathname argument is needed such that the server knows how to specify the
+root directory of a remote machine. \fBgnuclient\fP prepends this string to each
+path argument given. For example, if you were trying to edit a file on a client
+machine called otter, whose root directory
+was accessible \fIfrom\fP the server machine via the path /net/otter, then this
+argument should be set to '/net/otter'. If this option is omitted,
+then the value is taken from the environment variable ``GNU_NODE'', if set, or
+the empty string otherwise.
+.TP 10
+\fBpath\fP
+This is the path of the file to be edited. If the file is a directory, then the
+directory browser dired is usually invoked instead.
+.TP 10
+\fBsexpr\fP
+This is part of a gnu emacs LISP expression to evaluate. All the arguments are
+bundled together and wrapped in a progn form.
+.PP
+.SH SETUP
+In order to use the programs, the file gnuserv.el can be copied into a
+directory on your GNU Emacs load-path, and loaded into GNU Emacs by the lisp
+form (load "gnuserv"). The server can then be initialized by the GNU Emacs
+lisp form (server-start).
+.PP
+Additionally, the patch to src/x11fns.c can be applied to allow GNU Emacs to
+de-iconify and raise its edit window upon request under certain X11 window
+managers.
+.SH EXAMPLE
+.PP
+.TP 10
+gnudoit -q '(server-make-window-visible)' '(mh-smail)'
+.TP 10
+gnuclient -h otter -p /net/otter /tmp/*
+.SH SECURITY
+\fBgnuserv\fP admits a limited form of security at the machine level. By default only
+connections from the host where the server is running will be allowed. All other
+server connections will be rejected with a cryptic message (which is displayed
+only by gnudoit). Alternatively, if the
+variable ``GNU_SECURE'' can be found in gnuserv's environment, and it names a
+readable filename, then this file is opened and assumed to be a list of
+hosts, one per line, from which the server will allow requests. Note that a
+host may be either a internet address, or a hostname. If this file contains a
+lot of hostnames then the server may take quite a time to start up.
+.SH KNOWN BUGS
+.PP
+If GNU Emacs attempts to send a string containing a newline character to
+\fBgnuserv\fP, then \fBgnuserv\fP will die.
+.SH FILES
+.PP
+.TP 8
+.B /etc/services
+.TP 8
+.B ~/.emacs
+\fIEmacs\fP customization file, see \fIemacs(1)\fP.
+.SH AUTHOR.
+Andy Norman (ange%anorman@hplabs.hp.com).

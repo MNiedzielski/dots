@@ -1,0 +1,51 @@
+*** x11fns.c~	Mon Jan  9 17:30:02 1989
+--- x11fns.c	Mon Jan  9 17:30:23 1989
+***************
+*** 827,832
+  #endif				/* subprocesses */
+  }
+  
+  syms_of_xfns ()
+  {
+    /* If not dumping, init_display ran before us, so don't override it.  */
+
+--- 827,848 -----
+  #endif				/* subprocesses */
+  }
+  
++ DEFUN ("x-remap-window", Fx_remap_window, Sx_remap_window,
++   0, 0, 0,
++   "Maps / raises the X window such that is now visible.")
++   ()
++ {
++ 
++   if (WindowMapped)
++     XRaiseWindow(XXdisplay,XXwindow);
++   else
++     XMapRaised(XXdisplay,XXwindow);
++ 
++   XFlush(XXdisplay);
++   return Qnil;
++ }
++ 
++ 
+  syms_of_xfns ()
+  {
+    /* If not dumping, init_display ran before us, so don't override it.  */
+***************
+*** 876,881
+    defsubr (&Sx_rebind_keys);
+  #endif notdef
+    defsubr (&Sx_debug);
+  }
+  
+  #endif /* HAVE_X_WINDOWS */
+
+--- 892,898 -----
+    defsubr (&Sx_rebind_keys);
+  #endif notdef
+    defsubr (&Sx_debug);
++   defsubr (&Sx_remap_window);
+  }
+  
+  #endif /* HAVE_X_WINDOWS */

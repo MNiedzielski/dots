@@ -1,0 +1,91 @@
+back-to-indentation	      ESC m
+  Function: Move point to the first non-whitespace character on this line.
+backward-to-indentation	      
+  Function: Move backward ARG lines and position at first nonblank character.
+basic-indent		      
+body-indent		      
+c-argdecl-indent	      
+  Variable: *Indentation level of declarations of C function arguments.
+c-comment-indent	      
+c-indent-command	      
+c-indent-level		      
+  Variable: *Indentation of C statements with respect to containing block.
+c-indent-line		      
+  Function: Indent current line as C code.
+c-tab-always-indent	      
+  Variable: *Non-nil means TAB in C mode should always reindent the current line,
+calculate-c-indent	      
+  Function: Return appropriate indentation for current line as C code.
+calculate-c-indent-within-comment
+  Function: Return the indentation amount for line, assuming that
+calculate-lisp-indent	      
+  Function: Return appropriate indentation for current line as Lisp code.
+comment-indent-hook	      
+  Variable: Function to compute desired indentation for a comment
+common-lisp-indent-hook	      
+current-indentation	      
+  Function: Return the indentation of the current line.
+delete-indentation	      ESC ^
+  Function: Join this line to previous and fix up whitespace at join.
+desired-indent		      
+forward-to-indentation	      
+  Function: Move forward ARG lines and position at first nonblank character.
+indent			      
+indent-according-to-mode      
+  Function: Indent line in proper way for current major mode.
+indent-c-exp		      
+  Function: Indent each line of the C grouping following point.
+indent-code-rigidly	      
+  Function: Indent all lines of code, starting in the region, sideways by ARG columns.
+indent-for-comment	      ESC ;
+  Function: Indent this line's comment to comment column, or insert an empty comment.
+indent-for-tab-command	      
+  Function: Indent line in proper way for current major mode.
+indent-line-function	      
+  Variable: Function to indent current line.
+indent-new-comment-line	      ESC LFD, ESC j
+  Function: Break line at point and indent, continuing comment if presently within one.
+indent-point		      
+indent-region		      ESC C-\
+  Function: Indent each nonblank line in the region.
+indent-region-function	      
+  Variable: Function which is short cut to indent each line in region with Tab.
+indent-relative		      
+  Function: Space out to under next indent point in previous nonblank line.
+indent-relative-maybe	      
+  Function: Indent a new line like previous nonblank line.
+indent-rigidly		      C-x TAB
+  Function: Indent all lines starting in the region sideways by ARG columns.
+indent-sexp		      
+  Function: Indent each line of the list starting just after point.
+indent-stack		      
+indent-tabs-mode	      
+  Variable: *Indentation can insert tabs if this is non-nil.
+indent-to		      
+  Function: Indent from point with tabs and spaces until COLUMN is reached.
+indent-to-column	      
+  Function: Indent from point with tabs and spaces until COLUMN is reached.
+indent-to-left-margin	      
+indented-text-mode	      
+  Function: Major mode for editing indented text intended for humans to read.
+indented-text-mode-map	      
+lisp-body-indent	      
+  Variable: 
+lisp-comment-indent	      
+lisp-indent-defform	      
+lisp-indent-hook	      
+  Variable: 
+lisp-indent-line	      
+  Function: Indent current line as Lisp code.
+lisp-indent-offset	      
+  Variable: 
+lisp-indent-specform	      
+move-past-close-and-reindent  ESC )
+  Function: Move past next ), delete indentation before it, then indent after it.
+newline-and-indent	      LFD
+  Function: Insert a newline, then indent according to major mode.
+normal-indent		      
+reindent-then-newline-and-indent
+  Function: Reindent current line, insert newline, then indent the new line.
+this-indent		      
+unindented-ok		      

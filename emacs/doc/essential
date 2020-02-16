@@ -1,0 +1,113 @@
+
+EMACS SURVIVAL GUIDE
+--------------------
+
+TERMS
+-----
+point	= cursor
+mark	= invisible point in text
+region	= area between mark & point
+mode	= collection of editing parameters, includes a keymap
+window	= visible part of a buffer
+buffer	= object inside emacs which holds text
+
+left	= left mouse button
+middle	= middle mouse button
+right	= right mouse button
+double	= hit mouse button twice
+
+C-'key'	= hold down <control> and press 'key'
+M-'key'	= hold down <left> or <right> and press 'key'
+
+
+KEY SEQUENCES
+-------------
+
+
+FILES
+-----
+C-x C-f		Find a file (read it into a buffer)
+C-x C-s		Save a file
+C-x C-w		Write a file (possibly with a new name)
+C-x s		Save some buffers. interactively save modified buffers
+
+
+
+BUFFERS and WINDOWS
+-------------------
+C-x C-b		list all Buffers
+C-x b		switch to a Buffer
+C-x o		switch to the Other window
+C-x 2		split this window into 2 windows
+C-x 1		make this window the only one
+
+MOUSE SUPPORT
+-------------
+left		Move point to mouse cursor, and allow dragging.
+middle		Set mark at mouse cursor, and put region in stuff buffer.
+right		Pop-up menu of editor commands.
+right double	Set mark and yank contents of current sunwindows selection
+
+
+EDITING TEXT
+------------
+Emacs is always in insert mode, just type to insert
+C-x u		Undo
+C-2		set mark at cursor
+C-w		cut (kill) region
+M-w		copy region
+C-y		paste (aka 'yank')
+C-d		Delete character under point
+Del		delete character to left of point
+C-t		transpose (switch) two characters
+M-t		transpose (switch) two words
+
+
+
+MACROS
+------
+C-x (		start defining macro
+C-x )		end defining macro
+C-x e		execute macro
+
+Note:	macros may also be named, bound to keys, and saved in files
+
+
+OTHER THINGS
+------------
+C-g		abort current command
+C-u 'number'	pass 'number' as an argument to a function
+		ie:
+			C-u 4 C-d	will delete four characters
+
+
+HELP
+----
+C-h C-h		help
+C-h b		describe-bindings (lists all current key bindings)
+C-h f		describe-function
+C-h i		info (very helpful on specific topics)
+C-h k		describe-key
+C-h t		tutorial (good, but a bit tedious)
+C-h v		describe-variable
+
+
+EXTENDED COMMANDS
+-----------------
+M-x command-name	executes an extended command
+
+Examples:
+M-x lpr-buffer	send the current buffer to the printer
+M-x lpr-region	send the current region to the printer
+M-x shell	start a shell (/bin/csh) session under emacs
+M-x grep	use grep to search through files, saving results
+M-x compile	run make (or any other command) and be able to
+		parse error messages
+
+
+EXITING EMACS
+-------------
+C-x C-c		exit emacs.
+		asks to save all unsaved buffers.
+		asks to kill running subprocesses.
+

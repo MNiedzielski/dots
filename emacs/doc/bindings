@@ -1,0 +1,257 @@
+Bindings:
+key		binding
+---		-------
+C-x             Control-X-prefix
+ESC             Prefix Command
+ESC '           abbrev-prefix-mark
+C-]             abort-recursive-edit
+C-x +           add-global-abbrev
+C-x C-a         add-mode-abbrev
+C-x u           advertised-undo
+ESC C-w         append-next-kill
+C-x a           append-to-buffer
+ESC m           back-to-indentation
+C-b             backward-char
+ESC [ D         backward-char
+DEL             backward-delete-char-untabify
+C-x DEL         backward-kill-sentence
+ESC DEL         backward-kill-word
+ESC C-p         backward-list
+C-x * i R       backward-page
+C-x [           backward-page
+ESC [ 2 1 0 z   backward-page
+ESC [ [         backward-paragraph
+ESC a           backward-sentence
+ESC C-b         backward-sexp
+ESC C-u         backward-up-list
+ESC b           backward-word
+C-x * g r       beginning-of-buffer
+ESC <           beginning-of-buffer
+ESC [ 2 1 4 z   beginning-of-buffer
+ESC C-a         beginning-of-defun
+C-a             beginning-of-line
+C-x e           call-last-kbd-macro
+ESC c           capitalize-word
+C-h a           command-apropos
+C-x !           compile
+C-x r           copy-rectangle-to-register
+C-x * f ,       copy-region-as-kill
+ESC w           copy-region-as-kill
+C-x l           count-lines-page
+ESC =           count-lines-region
+C-x 4           ctl-x-4-prefix
+ESC /           dabbrev-expand
+C-x C-o         delete-blank-lines
+C-d             delete-char
+ESC \           delete-horizontal-space
+ESC ^           delete-indentation
+C-x 1           delete-other-windows
+C-x 0           delete-window
+C-h b           describe-bindings
+C-h C-c         describe-copying
+C-h C-d         describe-distribution
+C-h d           describe-function
+C-h f           describe-function
+C-h k           describe-key
+C-h c           describe-key-briefly
+C-h m           describe-mode
+C-h C-w         describe-no-warranty
+C-h s           describe-syntax
+C-h v           describe-variable
+ESC 0 .. ESC 9  digit-argument
+C-x d           dired
+C-x 4 d         dired-other-window
+ESC C-d         down-list
+C-x C-l         downcase-region
+ESC l           downcase-word
+C-x )           end-kbd-macro
+C-x * m r       end-of-buffer
+ESC >           end-of-buffer
+ESC [ 2 2 0 z   end-of-buffer
+ESC C-e         end-of-defun
+C-e             end-of-line
+C-x * g t       enlarge-window
+C-x ^           enlarge-window
+ESC [ 2 3 0 z   enlarge-window
+C-x * g T       enlarge-window-horizontally
+C-x }           enlarge-window-horizontally
+ESC C-x         eval-defun
+ESC ESC         eval-expression
+C-x C-e         eval-last-sexp
+LFD             eval-print-last-sexp
+C-x * j ESC l   exchange-point-and-mark
+C-x C-x         exchange-point-and-mark
+ESC [ 2 0 0 z   exchange-point-and-mark
+ESC x           execute-extended-command
+ESC C-c         exit-recursive-edit
+C-x '           expand-abbrev
+ESC q           fill-paragraph
+ESC g           fill-region
+C-x C-v         find-alternate-file
+C-x C-f         find-file
+C-x 4 C-f       find-file-other-window
+C-x 4 f         find-file-other-window
+C-x C-r         find-file-read-only
+ESC .           find-tag
+C-x 4 .         find-tag-other-window
+C-x x           flip
+C-f             forward-char
+ESC [ C         forward-char
+ESC C-n         forward-list
+C-x * o R       forward-page
+C-x ]           forward-page
+ESC [ 2 1 3 z   forward-page
+ESC ]           forward-paragraph
+ESC e           forward-sentence
+ESC C-f         forward-sexp
+ESC f           forward-word
+C-h             help-command
+C-h ?           help-for-help
+C-h C-h         help-for-help
+C-h t           help-with-tutorial
+C-x * e l       ignore-key
+C-x * g l       ignore-key
+ESC [ 1 9 6 z   ignore-key
+ESC [ 1 9 8 z   ignore-key
+ESC ;           indent-for-comment
+ESC LFD         indent-new-comment-line
+ESC j           indent-new-comment-line
+ESC C-\         indent-region
+C-x TAB         indent-rigidly
+ESC C-q         indent-sexp
+C-h i           info
+C-x i           insert-file
+ESC (           insert-parentheses
+C-x g           insert-register
+C-x -           inverse-add-global-abbrev
+C-x C-h         inverse-add-mode-abbrev
+C-r             isearch-backward
+C-s             isearch-forward
+C-\             isearch-forward-regexp
+ESC C-s         isearch-forward-regexp
+ESC SPC         just-one-space
+C-x q           kbd-macro-query
+C-g             keyboard-quit
+C-x k           kill-buffer
+C-x @           kill-compilation
+C-k             kill-line
+C-w             kill-region
+C-x * j l       kill-region-and-unmark
+ESC [ 2 0 1 z   kill-region-and-unmark
+ESC k           kill-sentence
+ESC C-k         kill-sexp
+ESC d           kill-word
+ESC TAB         lisp-complete-symbol
+TAB             lisp-indent-line
+C-x * c l       list-buffers
+C-x C-b         list-buffers
+ESC [ 1 9 4 z   list-buffers
+C-x C-d         list-directory
+C-x m           mail
+C-x 4 m         mail-other-window
+ESC C-h         mark-defun
+C-x C-p         mark-page
+ESC h           mark-paragraph
+ESC C-@         mark-sexp
+C-x h           mark-whole-buffer
+ESC @           mark-word
+C-c             mode-specific-command-prefix
+ESC )           move-past-close-and-reindent
+ESC r           move-to-window-line
+C-x p           narrow-to-page
+C-x n           narrow-to-region
+ESC -           negative-argument
+RET             newline
+C-x `           next-error
+C-n             next-line
+ESC [ B         next-line
+ESC ~           not-modified
+C-o             open-line
+C-x o           other-window
+C-x /           point-to-register
+C-x * b ESC l   prev-complex-command
+C-p             previous-line
+ESC [ A         previous-line
+ESC %           query-replace
+C-q             quoted-insert
+C-x * i ESC ,   re-search-backward
+C-x * i ,       re-search-forward
+C-l             recenter
+C-x * k r       recenter
+ESC [ 2 1 8 z   recenter
+C-x * b l       redraw-display
+ESC [ 1 9 3 z   redraw-display
+C-x j           register-to-point
+C-x ESC         repeat-complex-command
+C-x * b ESC L   rerun-prev-command
+C-x * i ESC l   research-backward
+C-x * i l       research-forward
+C-x C-\         save-buffer
+C-x C-s         save-buffer
+C-x C-z         save-buffer
+C-x C-c         save-buffers-kill-emacs
+C-x s           save-some-buffers
+C-x * i r       scroll-down
+ESC [ 2 1 6 z   scroll-down
+ESC v           scroll-down
+C-x * c t       scroll-down-in-place
+ESC [ 2 2 6 z   scroll-down-in-place
+C-x <           scroll-left
+ESC C-v         scroll-other-window
+C-x >           scroll-right
+C-v             scroll-up
+C-x * o r       scroll-up
+ESC [ 2 2 2 z   scroll-up
+C-x * d t       scroll-up-in-place
+ESC [ 2 2 7 z   scroll-up-in-place
+SPC .. ~        self-insert-command
+C-x ;           set-comment-column
+C-x f           set-fill-column
+C-x .           set-fill-prefix
+C-x C-n         set-goal-column
+C-@             set-mark-command
+C-x $           set-selective-display
+ESC !           shell-command
+ESC |           shell-command-on-region
+C-x * f t       shrink-window
+ESC [ 2 2 9 z   shrink-window
+C-x * f T       shrink-window-horizontally
+C-x {           shrink-window-horizontally
+ESC $           spell-word
+ESC C-o         split-line
+C-x 5           split-window-horizontally
+C-x 2           split-window-vertically
+C-x (           start-kbd-macro
+C-x C-@         sun-mouse-handler
+C-x * f l       sun-select-region
+ESC [ 1 9 7 z   sun-select-region
+C-x * h l       sun-yank-selection
+ESC [ 1 9 9 z   sun-yank-selection
+C-z             suspend-emacstool
+C-x b           switch-to-buffer
+C-x 4 b         switch-to-buffer-other-window
+ESC i           tab-to-tab-stop
+ESC ,           tags-loop-continue
+C-x C-q         toggle-read-only
+C-t             transpose-chars
+C-x C-t         transpose-lines
+ESC C-t         transpose-sexps
+ESC t           transpose-words
+C-_             undo
+C-x * d l       undo
+ESC [ 1 9 5 z   undo
+C-u             universal-argument
+C-x C-u         upcase-region
+ESC u           upcase-word
+C-h C-n         view-emacs-news
+C-h n           view-emacs-news
+C-h l           view-lossage
+C-x =           what-cursor-position
+C-h w           where-is
+C-x w           widen
+C-x C-w         write-file
+C-x * h ,       yank
+C-x * j L       yank
+C-y             yank
+ESC y           yank-pop
+ESC z           zap-to-char
