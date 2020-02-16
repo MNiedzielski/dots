@@ -76,9 +76,6 @@ setenv	INDEXDIR		$HOME/h
 
 #setenv  PYTHONPATH		.:/lib/python2.7/site-packages:/usr/local/lib/python2.7/site-packages:/usr/lib/python2.7:$HOME/src
 ##setenv  PYTHONPATH		.:/lib/python2.7/site-packages:/usr/local/lib/python2.7/site-packages:/usr/lib/python2.7:$HOME/src:$HOME/src/nasuni
-#setenv  SLACK_TOKEN             xoxb-14929910341-Xfug3Kv9p9R0CY78LtI4vj5B
-#setenv  LIBRATO_USERID		noc@nasuni.com
-#setenv  LIBRATO_API_TOKEN	d8412b51660e9035209898fd8d1e934e379a97bc57a867af7693344f9a87fd11
 
 #
 # DATED: environment variables dependent upon OS revision

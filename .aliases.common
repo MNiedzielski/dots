@@ -14,7 +14,7 @@
 	alias	cd	'set tmp=$cwd; chdir \!*; set old=$tmp; sethdr'
 	alias	cgrep	"grep \!* *.[Cch]"
 	alias	clean	"\rm -f #* *~ .*~ *%"
-        alias   nclone  'for i in aws-account aws-acra aws-lock aws-noc aws-supportbridge aws-updates devops-docs devops-tools puppet-acra puppet-base puppet-noc puppet-supportbridge puppet-updates python-lock python-noc retired-nasuni retired-rackspace static-dashboard; do git clone ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/$i; done'
+#        alias   nclone  'for i in aws-account aws-acra aws-lock aws-noc aws-supportbridge aws-updates devops-docs devops-tools puppet-acra puppet-base puppet-noc puppet-supportbridge puppet-updates python-lock python-noc static-dashboard; do git clone ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/$i; done'
 	alias	clpr	'vgrind \!* -t | lpr -t -h'
 	alias	cprgb	"cp \!:1.red \!:2.red; cp \!:1.grn \!:2.grn; cp \!:1.blu \!:2.blu; cp \!:1.doc \!:2.doc; cp \!:1.xbgr \!:2.xbgr"
 	alias	cptree	'cd \!:1; tar cf - . | (cd \!:2; tar xpf -)'
@@ -73,8 +73,6 @@
 	alias	mk	'rsh isis "cd `pwd`; make -k"'
 	alias	mvrgb	"mv \!:1.red \!:2.red; mv \!:1.grn \!:2.grn; mv \!:1.blu \!:2.blu; mv \!:1.doc \!:2.doc; mv \!:1.xbgr \!:2.xbgr"
 	alias	nms	'tbl \!* | nroff -ms | more'
-        alias   noc     'python $HOME/src/nasuni/devops-tools/nasunienv.py'
-        alias   nocl    'python $HOME/src/nasuni/devops-tools/nasunienv.py list'
 	alias	open	'chmod go+r'
 	alias	p	'set d=`echo \!^* | sed "s/./\/&*/g"`; set d = `dirp $d`; pd $d || echo $d'
 	alias	pd	'set old=$cwd; pushd \!*; sethdr'
