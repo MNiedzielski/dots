@@ -1,1 +1,195 @@
-Dropbox/Work/.aliases.common
+#
+# .aliases.common
+#
+# aliases for csh and tcsh
+#
+# Wed Nov 30 1988  Mark Niedzielski (niedziel@copper)
+# Tue Feb 11 1992  mark niedzielski  (min@iclil)
+
+
+	alias	acreds	gimme-aws-creds
+	alias	back	'cd $old'
+	alias	bye	logout
+	alias	c	'set d=`echo \!^* | sed "s/./\/&*/g"`; set d = `dirp $d`; cd $d || echo $d'
+	alias	cd	'set tmp=$cwd; chdir \!*; set old=$tmp; sethdr'
+	alias	cgrep	"grep \!* *.[Cch]"
+	alias	clean	"\rm -f #* *~ .*~ *%"
+        alias   nclone  'for i in aws-account aws-acra aws-lock aws-noc aws-supportbridge aws-updates devops-docs devops-tools puppet-acra puppet-base puppet-noc puppet-supportbridge puppet-updates python-lock python-noc retired-nasuni retired-rackspace static-dashboard; do git clone ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/$i; done'
+	alias	clpr	'vgrind \!* -t | lpr -t -h'
+	alias	cprgb	"cp \!:1.red \!:2.red; cp \!:1.grn \!:2.grn; cp \!:1.blu \!:2.blu; cp \!:1.doc \!:2.doc; cp \!:1.xbgr \!:2.xbgr"
+	alias	cptree	'cd \!:1; tar cf - . | (cd \!:2; tar xpf -)'
+	alias	debug	'dbxtool < /dev/null >& /dev/null \!* &'
+	alias	df	'df -h'
+	alias	dm	gcloud deployment-manager
+	alias	dmc	gcloud deployment-manager deployments create
+	alias	dmd	gcloud deployment-manager deployments delete
+	alias	dml	gcloud deployment-manager deployments list
+	alias	dmdes	gcloud deployment-manager deployments describe
+	alias	dots	'/usr/bin/git --git-dir=$HOME/.dots.git/ --work-tree=$HOME'
+	alias	du	'du -sch'
+	alias	ekdir	'ekfinger \!* | grep -v Connecting | less'
+	alias	elpr	'enscript -r -B -h \!*'
+	alias	emac	emacsclient
+	alias	f	finger
+	alias	ff	'find . -name \*\!*\* -print'
+        alias   forall  "find . -name '[a-z]*' -maxdepth 1 -type d -exec sh -c 'echo "\$0" && cd "\$0" && \!*' {} \;"
+        alias   gab     "find . -name '[a-z]*' -maxdepth 1 -type d -exec sh -c 'echo "\$0" && git -C "\$0" branch' {} \;"
+        alias   gap     "find . -name '[a-z]*' -maxdepth 1 -type d -exec sh -c 'echo "\$0" && git -C "\$0" pull --tags' {} \;"
+#	alias	gaps	"find . -name '[a-z]*' -maxdepth 1 -type d -exec sh -c 'echo "\$0" && git -C "\$0" status|grep Your|grep -v up-to-date' {} \;"
+	alias	gaps	"find . -name '[a-z]*' -maxdepth 1 -type d -exec sh -c 'echo "\$0" && git -C "\$0" status|grep Your|grep -v up-to-date;git -C "\$0" --no-pager log origin/master..HEAD --oneline' {} \;"
+	alias	gc	gcloud
+	alias	gcl	gcloud config list
+	alias	gcp	gcloud config set project
+        alias   gcssh   gcloud compute --project=thinking-cacao-499 ssh \!:1 -- bash
+	alias	gcco	'gcc -O -fstrength-reduce -fforce-mem -fomit-frame-pointer -finline-functions'
+	alias	gfind	'find \!:2 -type f -exec grep \!:1 {} \; -print'
+	alias   gg	'grep -Rni \!:1 *'
+        alias   gita    "find . -name '[a-z]*' -maxdepth 1 -type d -exec sh -c 'echo "\$0" && git -C "\$0" \!*' {} \;"
+        # Git Branch Check
+        alias   gitbc   'git for-each-ref --format="%(refname:short) %(push:track)" refs/heads'
+        alias   gits    'git -C \!*'
+	alias	h	history
+	alias	hdr	'echo -n "]l\!*\"'
+	alias	hp	'tooltool -f hp.tt'
+	alias	ifd	input_from_defaults
+	alias	ihdr	'echo -n "]L\!*\"'
+	alias	ip	'set h=`ypmatch \!:1 hosts`; echo $h[1]'
+	alias	isp	tooltool -f ispell.tt 
+	alias	index	'ctags -v \!* | sort -f > index; vgrind -t -x index | lpr -t -JIndex; \rm -f index'
+	alias	j	jobs -l
+#	alias	la	'/bin/ls -FaC'
+	alias	la	'/bin/ls -a'
+#	alias	ll	'/bin/ls -FlaC'
+	alias	ll	'/bin/ls -lah'
+	alias	l	'/bin/ls -lh'
+        alias	lb	librato-spark.bash
+	alias	lman	'nroff -man \!:1 | less'
+        alias	lnrgb	"ln -s \!:2.red \!:1.red; ln -s \!:2.grn \!:1.grn; ln -s \!:2.blu \!:1.blu; ln -s \!:2.doc \!:1.doc; ln -s \!:2.xbgr \!:1.xbgr"
+	alias	ls	'/bin/ls -C'
+	alias	lpr2	'enscript -2rBh'
+	alias	lt	'last | less'
+	alias	ltc	'lastcomm | less'
+	alias	mail	Mail
+	alias	mk	'rsh isis "cd `pwd`; make -k"'
+	alias	mvrgb	"mv \!:1.red \!:2.red; mv \!:1.grn \!:2.grn; mv \!:1.blu \!:2.blu; mv \!:1.doc \!:2.doc; mv \!:1.xbgr \!:2.xbgr"
+	alias	nms	'tbl \!* | nroff -ms | more'
+        alias   noc     'python $HOME/src/nasuni/devops-tools/nasunienv.py'
+        alias   nocl    'python $HOME/src/nasuni/devops-tools/nasunienv.py list'
+	alias	open	'chmod go+r'
+	alias	p	'set d=`echo \!^* | sed "s/./\/&*/g"`; set d = `dirp $d`; pd $d || echo $d'
+	alias	pd	'set old=$cwd; pushd \!*; sethdr'
+	alias	pd2	'set old=$cwd; pushd +2\!*; sethdr'
+	alias	pd3	'set old=$cwd; pushd +3\!*; sethdr'
+	alias	pd4	'set old=$cwd; pushd +4\!*; sethdr'
+	alias	pd5	'set old=$cwd; pushd +5\!*; sethdr'
+	alias	pd6	'set old=$cwd; pushd +6\!*; sethdr'
+	alias	play	'gomf \!:*'
+	alias	pn	'set x = `grep -i \!* ~/h/phones`; echo $x[3*] $x[2] $x[1]'
+	alias	pop	'set old=$cwd; popd; sethdr'
+#	alias	psg	'ps --no-headers -C \!*'
+	alias	psg	'ps -ef | grep \!* | grep -v grep'
+#	alias	psg-	'ps -auxww | grep \!* | grep -v grep'
+#	alias	psg2	'ps -xuww | grep \!* | grep -v grep'
+	alias	r	"on -i  \!:1 \!:2*"
+	alias	rkill	'on \!:1 kill \!:2*'
+	alias	rplay	'set tmp=`on -n \!:1 arch`; on -i \!:1 /local/wizards.$tmp/gomf \!:2*'
+	alias	rm	'rm -i'
+	alias	rpmq	'rpm -qa \*\!*\*'
+	alias	rps	"on \!:1 ps \!:2*"
+	alias	rpsg	'on \!:1 ps -auxww | grep \!:2 | grep -v grep'
+	alias	rpt	"on \!:1 pt \!:2*"
+	alias	rstart	"on \!:1 kill -19 \!:2*"
+	alias	rstop	"on \!:1 kill -17 \!:2*"
+	alias	rtop	'set tmp=`on -n \!:1 arch`; on -i \!:1 /local/wizards.$tmp/top \!:2*'
+	alias	rw	'on \!:1 w'
+	alias	rzap	'set j=`rps \!:1 ax | grep \!:2* | grep -v grep`; rkill \!:1 -9 `echo $j[1]`'
+#	alias	rzap	'set j=`rpsg \!:1 \!:2*`; rkill \!:1 -9 `echo $j[1]`'
+	alias	sd	'screendump | rasfilter8to1 | pssun -r -S 8 | lpr'
+	alias	shut	'chmod go-r'
+	alias	start	kill -19
+	alias	stop	kill -17
+	alias	sys	"(uptime; ps -auxww) | less"
+	alias	the	'll `which \!:1`'
+        alias   trigp   'aws --profile production_account codecommit put-repository-triggers --repository-name \!:1 --cli-input-json file://\!:1.triggers.json'
+	alias	tt	'tooltool -f \!*.tt'
+	alias	ucon	'\rm ~/.exit'
+	alias	x	exit
+	alias	xb	'setenv DISPLAY 208.133.210.25:0'
+	alias	xd	'setenv DISPLAY `ip develop`:0'
+        alias   ymlint  ruby -r yaml -e "YAML.load_file\(\'\!:1\'\)"
+        alias   halint  "find . -name '*.yaml' -exec ruby -debug -r yaml -e 'YAML.load_file('{}')' \;"
+	alias	z	suspend
+#	alias	zap	'set j=`ps x | grep \!* | grep -v grep`; kill -9 `echo $j[1]`'
+	alias	zap	'set j=`ps -ef | grep \!* | grep -v grep`; kill -9 `echo $j[2]`'
+#	alias	zap	'kill -TERM `ps --no-headers -o pid -C \!*`'
+
+	alias	24z	screen off
+	alias	25z	screen on
+
+
+	#
+	# sccs stuff
+	#
+#	alias	delta	sccs delta
+#	alias	deledit	sccs deledit
+#	alias	delget	sccs delget
+#	alias	edit	sccs edit
+#	alias	fix	sccs fix
+#	alias	get	sccs get
+#	alias	info	sccs info
+#	alias	prt	sccs prt
+
+
+	alias	..	'cd ..'
+
+	alias	+	%+
+	alias	-	%-
+
+	alias	1	%1
+	alias	2	%2
+	alias	3	%3
+	alias	4	%4
+	alias	5	%5
+	alias	6	%6
+	alias	7	%7
+	alias	8	%8
+	alias	9	%9
+	alias	10	%10
+	alias	11	%11
+	alias	12	%12
+	alias	13	%13
+	alias	14	%14
+	alias	15	%15
+	alias	16	%16
+
+	alias	k1	kill -9 %1
+	alias	k2	kill -9 %2
+	alias	k3	kill -9 %3
+	alias	k4	kill -9 %4
+	alias	k5	kill -9 %5
+	alias	k6	kill -9 %6
+	alias	k7	kill -9 %7
+	alias	k8	kill -9 %8
+	alias	k9	kill -9 %9
+	alias	k10	kill -9 %10
+	alias	k11	kill -9 %11
+	alias	k12	kill -9 %12
+	alias	k13	kill -9 %13
+	alias	k14	kill -9 %14
+	alias	k15	kill -9 %15
+	alias	k16	kill -9 %16
+
+
+#
+# aliases.fun
+#
+# real bizzare things ....
+#
+# Thu Jul  7 07:59:11 1988  Mark Reichert x25948  (niedziel@copper)
+#
+
+#alias	worm_on	"rsh \!:1 \"setenv TERM sun; worms \!:3* | cat -u > /dev/\!:2\""
+alias	ow	on \!:1 "echo -n '[1t' > /dev/\!:2"
+alias	cw	on \!:1 "echo -n '[2t' > /dev/\!:2"
+alias	ew	on \!:1 "echo -n '[5t' > /dev/\!:2"
+alias	hw	on \!:1 "echo -n '[6t' > /dev/\!:2"
